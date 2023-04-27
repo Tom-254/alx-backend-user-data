@@ -113,4 +113,3 @@ def main():
                            row[5], row[6]))
     cursor.close()
     db.close()
-

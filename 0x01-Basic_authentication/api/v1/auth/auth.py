@@ -16,7 +16,7 @@ class Auth:
         if path is not None and excluded_paths is not None:
             for excluded_path in excluded_paths:
                 excluded_regex = '^{}$'.format(re.escape(
-                    excluded_path.rstrip('/')) + '/?.*')
+                    excluded_path.rstrip('/')).replace('\\*', '.*') + '/?.*')
                 if re.match(excluded_regex, path):
                     return False
         return True

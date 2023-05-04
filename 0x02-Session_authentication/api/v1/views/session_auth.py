@@ -32,7 +32,8 @@ def login() -> Tuple[str, int]:
         return jsonify(error_not_found), 404
     if users[0].is_valid_password(password):
 
-        return jsonify(users[0].to_json()).set_cookie(
-            os.getenv("SESSION_NAME"),
-            auth.create_session(getattr(users[0], 'id')))
+        sessiond_id = auth.create_session(getattr(users[0], 'id'))
+        res = jsonify(users[0].to_json())
+        res.set_cookie(os.getenv("SESSION_NAME"), sessiond_id)
+        return res
     return jsonify({"error": "wrong password"}), 401

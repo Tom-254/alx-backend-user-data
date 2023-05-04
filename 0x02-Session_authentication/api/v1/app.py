@@ -28,6 +28,7 @@ if auth_type == 'basic_auth':
 if auth_type == 'session_auth':
     auth = SessionAuth()
 
+
 @app.errorhandler(404)
 def not_found(error) -> str:
     """ Not found handler
@@ -65,6 +66,7 @@ def authenticate_user():
         if user is None:
             abort(403)
         request.current_user = user
+
 
 if __name__ == "__main__":
     host = getenv("API_HOST", "0.0.0.0")

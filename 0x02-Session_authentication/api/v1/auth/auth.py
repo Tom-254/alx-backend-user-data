@@ -2,6 +2,7 @@
 """Module to manage the API authentication.
 """
 import re
+import os
 from typing import List, TypeVar
 from flask import request
 
@@ -31,3 +32,10 @@ class Auth:
         """Returns current user.
         """
         return None
+
+    def session_cookie(self, request=None) -> str:
+        """Returns a cookie value from a request
+        """
+        if request:
+            cookie_name = os.getenv('SESSION_NAME')
+            return request.cookies.get(cookie_name)

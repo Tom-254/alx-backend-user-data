@@ -8,7 +8,7 @@ from flask import abort, jsonify, request
 
 from models.user import User
 from api.v1.views import app_views
-from api.v1.app import auth
+
 
 
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
@@ -31,7 +31,7 @@ def login() -> Tuple[str, int]:
     if len(users) <= 0:
         return jsonify(error_not_found), 404
     if users[0].is_valid_password(password):
-
+        from api.v1.app import auth
         sessiond_id = auth.create_session(getattr(users[0], 'id'))
         res = jsonify(users[0].to_json())
         res.set_cookie(os.getenv("SESSION_NAME"), sessiond_id)
@@ -46,6 +46,7 @@ def logout() -> Tuple[str, int]:
     Return:
       - An empty JSON object.
     """
+    from api.v1.app import auth
     if not auth.destroy_session(request):
         abort(404)
     return jsonify({})

@@ -1,2 +1,2 @@
 #!/bin/bash
-git add . && git commit -m '0x00. Personal data' && git push
+git add . && git commit -m '0x02. Session authentication' && git push

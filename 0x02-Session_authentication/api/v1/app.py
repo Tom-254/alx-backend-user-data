@@ -20,7 +20,6 @@ app.register_blueprint(app_views)
 CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
 auth_type = getenv('AUTH_TYPE', 'auth')
-auth = None
 if auth_type == 'auth':
     auth = Auth()
 

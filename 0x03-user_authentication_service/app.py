@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """A simple Flask app with an authentication layer
 """
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, abort
 
 from auth import Auth
 
@@ -22,7 +22,7 @@ def index() -> str:
 def users() -> str:
     """POST /users
     Return:
-        - The Registered User
+        - The Registered User or error payload
     """
     email, password = request.form.get("email"), request.form.get("password")
     try:

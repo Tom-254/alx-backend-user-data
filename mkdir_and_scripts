@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+allThreads=("user.py" "app.py" "db.py" "auth.py" "main.py")
+
+mkdir -p "0x03-user_authentication_service"
+
+for t in ${allThreads[@]}; do
+
+    if [[ $t == *".py"* ]]; then
+        echo -e "#!/usr/bin/env python3\n" > "./0x03-user_authentication_service/$t" && chmod +x "./0x03-user_authentication_service/$t"
+    else
+        # echo -e "#include \"0x03-user_authentication_service.h\"" "" "" "" "" ""> "./0x03-user_authentication_service/$t"
+        touch "./0x03-user_authentication_service/$t"
+    fi
+
+done
+
+echo -e "# ALX Software Engineering Programme Project: 0x03. User authentication service" > "./0x03-user_authentication_service/README.md"
+
+echo -e "#!/bin/bash\ngit add . && git commit -m '0x03. User authentication service' && git push"  > "./0x03-user_authentication_service/correction" && chmod +x "./0x03-user_authentication_service/correction"
+
+cp "../alx-higher_level_programming/0x05-python-exceptions/clean_up_corrections" "./0x03-user_authentication_service/"
+
+cd ./0x03-user_authentication_service
+
+# mkdir -p "0x1C-makefiles"
+
+# for t in ${allThreads[@]}; do
+
+#     if [[ $t == *".py"* ]]; then
+#         echo -e "#!/usr/bin/python3\n" > "./0x1C-makefiles/$t" && chmod +x "./0x1C-makefiles/$t"
+#     else
+#         # echo -e "#include \"sort.h\"\n" > "./0x1C-makefiles/$t"
+#         touch "./0x1C-makefiles/$t"
+#     fi
+
+# done
+
+# echo -e "# ALX Software Engineering Programme Project: 0x1C. C - Makefiles" > "./0x1C-makefiles/README.md"
+
+# cp "0x15-file_io/correction" "./0x1C-makefiles/"
+
+# cd /root/alx-low_level_programming/0x1C-makefiles
